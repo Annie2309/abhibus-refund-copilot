@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AbhiBus Refund Copilot</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        abhi<span>bus</span>
+    </div>
+
+    <div class="prototype">
+        INDEPENDENT PRODUCT PROTOTYPE
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="badge">
+            AI REFUND COPILOT
+        </div>
+
+        <h1>
+            Know your refund<br>
+            before you cancel.
+        </h1>
+
+        <p>
+            Understand your cancellation window, estimated refund,
+            and applicable charges in seconds.
+        </p>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>
+            Enter your booking details
+        </h2>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+
+                <label>
+                    Bus operator
+                </label>
+
+                <select id="operator">
+
+                    <option value="standard">
+                        Standard Policy
+                    </option>
+
+                    <option value="custom">
+                        Demo Operator
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Amount paid
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span>₹</span>
+
+                    <input
+                        id="paidFare"
+                        type="number"
+                        value="1000"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Original ticket fare
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span>₹</span>
+
+                    <input
+                        id="originalFare"
+                        type="number"
+                        value="1000"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Departure date & time
+                </label>
+
+                <input
+                    id="departure"
+                    type="datetime-local"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="policy-box">
+
+            <div class="policy-header">
+
+                <div>
+
+                    <h3>
+                        Estimated refund policy
+                    </h3>
+
+                    <p id="policySource">
+                        Standardized prototype policy
+                    </p>
+
+                </div>
+
+                <span class="verified">
+                    ✓ POLICY LOADED
+                </span>
+
+            </div>
+
+
+            <div
+                id="policyRules"
+                class="rules"
+            ></div>
+
+
+            <p class="policy-note">
+
+                Percentages shown here represent the
+                <strong>estimated percentage of the base fare refunded</strong>.
+                Actual operator policies may vary.
+
+            </p>
+
+        </div>
+
+
+        <button onclick="calculateRefund()">
+
+            Calculate my refund →
+
+        </button>
+
+
+        <p class="disclaimer">
+
+            Prototype only. This tool is not connected to AbhiBus
+            booking systems and does not process cancellations.
+
+        </p>
+
+    </section>
+
+
+
+    <section
+        id="result"
+        class="result hidden"
+    >
+
+        <div class="result-header">
+
+            <div>
+
+                <div class="small-label">
+                    ESTIMATED REFUND
+                </div>
+
+                <div
+                    id="refundAmount"
+                    class="refund-amount"
+                >
+                    ₹0
+                </div>
+
+            </div>
+
+
+            <div
+                id="status"
+                class="status"
+            ></div>
+
+        </div>
+
+
+
+        <div class="breakdown">
+
+            <div>
+
+                <span>
+                    Amount paid
+                </span>
+
+                <strong id="paidDisplay">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Base fare refund
+                </span>
+
+                <strong id="baseRefund">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Platform cancellation fee
+                </span>
+
+                <strong>
+                    ₹15
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="explanation">
+
+            <div class="ai-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <h3>
+                    Copilot explanation
+                </h3>
+
+                <p id="explanationText"></p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="warning">
+
+            ⚠️ <strong>Before you cancel:</strong>
+
+            This is an estimate based on the standardized policy
+            used in this prototype. Always verify the cancellation
+            policy shown on your actual booking.
+
+        </div>
+
+    </section>
+
+
+
+    <section class="why">
+
+        <h2>
+            Why build this?
+        </h2>
+
+        <p>
+
+            Cancellation policies can vary between bus operators
+            and time windows. The Copilot converts complicated
+            cancellation rules into a simple refund estimate
+            before a customer decides to cancel.
+
+        </p>
+
+
+        <div class="flow">
+
+            <div>
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    Read policy
+                </strong>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div>
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Calculate
+                </strong>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div>
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Explain
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    Built as an independent AI-assisted product prototype.
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
